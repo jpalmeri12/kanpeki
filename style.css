@@ -1,0 +1,986 @@
+@font-face {
+    font-family: "FuturaBook";
+    src: url("fonts/FuturaPTBook.otf");
+}
+
+@font-face {
+    font-family: "FuturaMedium";
+    src: url("fonts/FuturaPTMedium.otf");
+}
+
+@font-face {
+    font-family: "FuturaDemi";
+    src: url("fonts/FuturaPTDemi.otf");
+}
+
+@font-face {
+    font-family: "FuturaBold";
+    src: url("fonts/FuturaPTBold.otf");
+}
+
+@font-face {
+    font-family: "FuturaHeavy";
+    src: url("fonts/FuturaPTHeavy.otf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+input {
+    padding: 0;
+}
+
+#stage {
+    position: absolute;
+    background-color: white;
+    overflow: hidden;
+}
+
+.screenBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.anim_fadeIn {
+    animation: fadeIn .25s linear normal forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.anim_fadeOut {
+    animation: fadeOut .25s linear normal forwards;
+}
+
+#menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+}
+
+.hoverBorder:hover {
+    border: .1rem solid rgba(0, 0, 0, .5);
+    margin: -.1rem;
+}
+
+.menuHeaderButton {
+    width: 5rem;
+    height: 1.5rem;
+    top: .5rem;
+    position: absolute;
+    background-color: gray;
+    border-radius: .75rem;
+}
+
+.menuHeaderText {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .8rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: black;
+    opacity: .5;
+    text-transform: uppercase;
+}
+
+#headerBtn0 {
+    left: 1rem;
+}
+
+#headerBtn1 {
+    left: 7.5rem;
+}
+
+#headerBtn2 {
+    left: 14rem;
+}
+
+.headerButtonSelect {
+    border: .1rem solid rgba(0, 0, 0, .5);
+    margin: -.1rem;
+}
+
+#headerDivider {
+    width: 19rem;
+    left: .5rem;
+    height: .1rem;
+    top: 2.5rem;
+    position: absolute;
+    background-color: #c0c0c0;
+    border-radius: .05rem;
+}
+
+.levelButton {
+    width: 3rem;
+    height: 1.25rem;
+    position: absolute;
+    background-color: gray;
+    border-radius: .25rem;
+}
+
+.levelButton:hover {
+    border: .1rem solid rgba(0, 0, 0, .5);
+    margin: -.1rem;
+}
+
+.levelButtonText {
+    top: 30%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .4rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: black;
+    opacity: .5;
+    text-transform: uppercase;
+}
+
+.levelButtonScore {
+    top: 67.5%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .45rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: black;
+    opacity: .3;
+}
+
+#wordListBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .75);
+    visibility: hidden;
+    z-index: 100;
+}
+
+.anim_screenIn {
+    animation: screenIn .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes screenIn {
+    0% {
+        visibility: visible;
+        background-color: rgba(255, 255, 255, 0);
+        transform: scale(0);
+    }
+    100% {
+        visibility: visible;
+        background-color: rgba(255, 255, 255, .75);
+        transform: scale(1);
+    }
+}
+
+.anim_screenOut {
+    animation: screenOut .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes screenOut {
+    0% {
+        visibility: visible;
+        background-color: rgba(255, 255, 255, .75);
+        transform: scale(1);
+    }
+    99% {
+        visibility: visible;
+        background-color: rgba(255, 255, 255, 0);
+        transform: scale(0);
+    }
+    100% {
+        visibility: hidden;
+        background-color: rgba(255, 255, 255, 0);
+        transform: scale(0);
+    }
+}
+
+#wordList {
+    width: 18rem;
+    height: 13rem;
+    left: 1rem;
+    top: 1rem;
+    position: absolute;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(233,233,233,1) 0%,rgba(209,209,209,1) 50%,rgba(203,203,203,1) 51%,rgba(214,214,214,1) 100%);
+    overflow: hidden;
+}
+
+#wordListTitle {
+    width: 100%;
+    top: .4rem;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: 1rem;
+    text-align: center;
+    color: rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+}
+
+#wordTableBox {
+    width: 16rem;
+    height: 10rem;
+    left: 1rem;
+    top: 2rem;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+#wordTable {
+    width: 100%;
+    font-size: .4rem;
+}
+
+#wordTable.tr {
+    border: 0px;
+}
+
+.tableHeader {
+    color: white;
+    background-color: #404040;
+}
+
+.tr0 {
+    background-color: white;
+}
+
+.tr1 {
+    background-color: #f0f0f0;
+}
+
+#wordDetailBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    visibility: hidden;
+}
+
+.anim_wordDetailBoxIn {
+    animation: wordDetailBoxIn .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes wordDetailBoxIn {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+        visibility: visible;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, .5);
+        visibility: visible;
+    }
+}
+
+.anim_wordDetailBoxOut {
+    animation: wordDetailBoxOut .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes wordDetailBoxOut {
+    0% {
+        background-color: rgba(0, 0, 0, .5);
+        visibility: visible;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+        visibility: hidden;
+    }
+}
+
+#wordDetail {
+    width: 100%;
+    height: 40%;
+    top: 60%;
+    position: absolute;
+    background-color: #e0e0e0;
+}
+
+.anim_wordDetailIn {
+    animation: wordDetailIn .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes wordDetailIn {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: 60%;
+    }
+}
+
+.anim_wordDetailOut {
+    animation: wordDetailOut .15s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes wordDetailOut {
+    0% {
+        top: 60%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+#wordDetailText {
+    width: 90%;
+    left: 5%;
+    top: 50%;
+    position: absolute;
+    text-align: center;
+    font-size: .8rem;
+    transform: translateY(-50%);
+}
+
+#helpScreenBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .75);
+    visibility: hidden;
+    z-index: 100;
+}
+
+#helpScreen {
+    width: 18rem;
+    height: 13rem;
+    left: 1rem;
+    top: 1rem;
+    position: absolute;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%);
+    overflow: hidden;
+}
+
+#helpLogo {
+    width: 100%;
+    height: 6rem;
+    position: absolute;
+    background-image: url(img/logo.svg);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#helpSubtitle {
+    width: 100%;
+    top: 6rem;
+    position: absolute;
+    font-family: "FuturaDemi";
+    text-align: center;
+    font-size: .8rem;
+    color: #404040;
+    transform: translateY(-50%);
+}
+
+#helpReadyButton {
+    width: 8rem;
+    height: 1.25rem;
+    left: 5rem;
+    top: 11rem;
+    position: absolute;
+    border-radius: .5rem;
+    background: linear-gradient(135deg, rgba(69,69,69,1) 0%,rgba(49,49,49,1) 50%,rgba(43,43,43,1) 51%,rgba(52,52,52,1) 100%);
+}
+
+#helpText {
+    width: 90%;
+    left: 5%;
+    top: 7rem;
+    position: absolute;
+    font-family: "FuturaDemi";
+    text-align: center;
+    font-size: .5rem;
+    color: #404040;
+}
+
+#helpReadyButtonText {
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    text-align: center;
+    font-size: .8rem;
+    color: #c0c0c0;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+}
+
+#menuTotalScore {
+    width: 100%;
+    top: 14rem;
+    position: absolute;
+    font-family: "FuturaDemi";
+    text-align: center;
+    font-size: .8rem;
+    color: #c0c0c0;
+    transform: translateY(-50%);
+}
+
+#menuHelpButton {
+    width: 1.25rem;
+    height: 1.25rem;
+    left: 18.5rem;
+    top: 13.5rem;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(69,69,69,1) 0%,rgba(49,49,49,1) 50%,rgba(43,43,43,1) 51%,rgba(52,52,52,1) 100%);
+}
+
+#menuHelpButtonText {
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    text-align: center;
+    font-size: .8rem;
+    color: #c0c0c0;
+    transform: translateY(-50%);
+}
+
+.gradGreen {
+    background: linear-gradient(135deg, rgba(164, 240, 213, 1) 0%, rgba(56, 230, 166, 1) 50%, rgba(37, 217, 151, 1) 51%, rgba(68, 240, 177, 1) 100%);
+}
+
+.gradBlue {
+    background: linear-gradient(135deg, rgba(164, 222, 240, 1) 0%, rgba(56, 192, 230, 1) 50%, rgba(37, 178, 217, 1) 51%, rgba(68, 203, 240, 1) 100%);
+}
+
+.gradRed {
+    background: linear-gradient(135deg, rgba(244, 188, 201, 1) 0%, rgba(236, 108, 140, 1) 50%, rgba(227, 93, 126, 1) 51%, rgba(244, 116, 148, 1) 100%);
+}
+
+#game {
+    width: 20rem;
+    height: 15rem;
+    top: 15rem;
+    position: absolute;
+    background-color: white;
+    visibility: hidden;
+}
+
+#gameScreen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#score {
+    width: 10rem;
+    height: 5rem;
+    left: 5rem;
+    top: .75rem;
+    position: absolute;
+    border-radius: 2.5rem;
+}
+
+.scoreNormal {
+    background: linear-gradient(135deg, rgba(224, 224, 224, 1) 0%, rgba(190, 190, 190, 1) 50%, rgba(181, 181, 181, 1) 51%, rgba(196, 196, 196, 1) 100%);
+}
+
+.scoreFreeze {
+    background: linear-gradient(135deg, rgba(69,69,69,1) 0%,rgba(49,49,49,1) 50%,rgba(43,43,43,1) 51%,rgba(52,52,52,1) 100%);
+}
+
+#scoreNum {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: 4rem;
+    text-align: center;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+}
+
+.scoreNumNormal {
+    color: rgba(0, 0, 0, .5);
+}
+
+.scoreNumFreeze {
+    color: rgba(255, 255, 255, .5);
+}
+
+.anim_scoreShake {
+    animation: scoreShake .125s linear 4 normal forwards;
+}
+
+@keyframes scoreShake {
+    0% {
+        transform: translate(0);
+    }
+    25% {
+        transform: translate(-.5rem);
+    }
+    50% {
+        transform: translate(0);
+    }
+    75% {
+        transform: translate(.5rem);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.anim_scoreNumJump {
+    animation: scoreNumJump .15s linear normal forwards;
+}
+
+@keyframes scoreNumJump {
+    0% {
+        top: 35%;
+    }
+    100% {
+        top: 50%;
+    }
+}
+
+#levelInfo {
+    left: .75rem;
+    top: .75rem;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .75rem;
+    text-align: left;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+    line-height: 100%;
+}
+
+#levelMode {
+    left: .75rem;
+    top: 1.5rem;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .5rem;
+    text-align: left;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+    line-height: 100%;
+}
+
+#bestText {
+    width: 5rem;
+    left: 14.25rem;
+    top: .75rem;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .75rem;
+    text-align: right;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+    line-height: 100%;
+}
+
+#bestSubtext {
+    width: 5rem;
+    left: 14.25rem;
+    top: 1.5rem;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .5rem;
+    text-align: right;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+    line-height: 100%;
+}
+
+.mascot {
+    width: 2rem;
+    height: 2rem;
+    top: 5rem;
+    position: absolute;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform-origin: center bottom;
+}
+
+#mascotLeft {
+    left: 1.5rem;
+}
+
+#mascotRight {
+    left: 16.5rem;
+}
+
+.anim_mascotJump {
+    animation: mascotJump 1.5s infinite cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes mascotJump {
+    0% {
+        transform: translateY(0rem);
+    }
+    10% {
+        transform: translateY(-.75rem);
+    }
+    20% {
+        transform: translateY(0rem);
+    }
+    30% {
+        transform: translateY(-.75rem);
+    }
+    40% {
+        transform: translateY(0rem);
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}
+
+.anim_mascotSway {
+    animation: mascotSway .75s infinite cubic-bezier(.5, 0, .5, 1) alternate forwards;
+}
+
+@keyframes mascotSway {
+    0% {
+        transform: skewX(-10deg);
+    }
+    100% {
+        transform: skewX(10deg);
+    }
+}
+
+.mascotImage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.mascotNormal {
+    background-image: url(img/mascot_normal.svg);
+}
+
+.mascotHappy {
+    background-image: url(img/mascot_happy.svg);
+}
+
+.mascotDead {
+    background-image: url(img/mascot_dead.svg);
+}
+
+#mascotRightImage {
+    transform: scaleX(-1);
+}
+
+#mascotLeftSignBox {
+    width: 4rem;
+    height: 3.5rem;
+    position: absolute;
+    transform: translateX(-1rem) translateY(-2rem) rotate(-20deg);
+}
+
+#mascotRightSignBox {
+    width: 4rem;
+    height: 3.5rem;
+    position: absolute;
+    transform: translateX(-1rem) translateY(-2rem) rotate(20deg);
+}
+
+.mascotSign {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/sign.svg);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform-origin: center bottom;
+}
+
+.anim_mascotSignIn {
+    animation: mascotSignIn .25s cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes mascotSignIn {
+    0% {
+        transform: rotate(50deg) scale(0);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.anim_mascotSignOut {
+    animation: mascotSignOut .25s cubic-bezier(.5, 0, 1, .5) normal forwards;
+}
+
+@keyframes mascotSignOut {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(50deg) scale(0);
+    }
+}
+
+.mascotSignText {
+    top: 25%;
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    font-size: .7rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: white;
+    line-height: 100%;
+}
+
+#question {
+    width: 18rem;
+    height: 1.5rem;
+    left: 1rem;
+    top: 7rem;
+    position: absolute;
+    background: linear-gradient(135deg, rgba(97, 97, 97, 1) 0%, rgba(69, 69, 69, 1) 50%, rgba(61, 61, 61, 1) 51%, rgba(74, 74, 74, 1) 100%);
+    border-radius: 2.5rem;
+}
+
+#questionText {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-size: 1rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: white;
+}
+
+#answerBox {
+    width: 18rem;
+    height: 1.5rem;
+    left: 1rem;
+    top: 9rem;
+    position: absolute;
+    background: rgb(242, 242, 242);
+    font-family: "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
+    outline: none;
+    border: none;
+    border-radius: 2.5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+}
+
+#answerSubtext {
+    width: 100%;
+    top: 10.5rem;
+    position: absolute;
+    text-align: center;
+    font-size: .6rem;
+}
+
+#answerSubLabel {
+    color: #d0d0d0;
+    text-transform: uppercase;
+}
+
+#answerSubEN {
+    color: #000000;
+}
+
+#answerSubJP {
+    color: #000000;
+}
+
+.textJP {
+    font-family: "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
+}
+
+.textEN {
+    font-family: "FuturaDemi";
+}
+
+#answerBox:focus {
+    border: .1rem solid rgba(0, 0, 0, .5);
+    margin: -.1rem;
+}
+
+#gameTimer {
+    width: 5rem;
+    height: 1rem;
+    left: 7.5rem;
+    top: 11.5rem;
+    position: absolute;
+    background-color: #c0c0c0;
+    border-radius: .5rem;
+    opacity: 0;
+}
+
+.anim_gameTimerIn {
+    animation: gameTimerIn .25s cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes gameTimerIn {
+    0% { 
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#gameTimerText {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    font-size: .8rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: white;
+}
+
+#startPanel {
+    width: 20rem;
+    height: 2.5rem;
+    top: 12.5rem;
+    position: absolute;
+}
+
+.anim_startPanelIn {
+    animation: startPanelIn .15s cubic-bezier(.5, 0, 1, .5) normal forwards;
+}
+
+@keyframes startPanelIn {
+    0% {
+        top: 15rem;
+    }
+    100% {
+        top: 12.5rem;
+    }
+}
+
+.anim_startPanelOut {
+    animation: startPanelOut .15s cubic-bezier(.5, 0, 1, .5) normal forwards;
+}
+
+@keyframes startPanelOut {
+    0% {
+        top: 12.5rem;
+    }
+    100% {
+        top: 15rem;
+    }
+}
+
+.startPanelButton {
+    width: 5rem;
+    height: 1.5rem;
+    top: .5rem;
+    position: absolute;
+    background-color: gray;
+    border-radius: .75rem;
+}
+
+.startPanelText {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaHeavy";
+    font-size: .8rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: black;
+    opacity: .5;
+    text-transform: uppercase;
+}
+
+#gameStartButton {
+    left: 3rem;
+}
+
+#gameExitButton {
+    left: 12rem;
+}
+
+.anim_menuMove0 {
+     animation: menuMove0 .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes menuMove0 {
+    0% {
+        top: -15rem;
+    }
+    100% {
+        top: 0rem;
+    }
+}
+
+.anim_menuMove1 {
+     animation: menuMove1 .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes menuMove1 {
+    0% {
+        top: 0rem;
+    }
+    100% {
+        top: -15rem;
+    }
+}
+
+.anim_gameMove0 {
+     animation: gameMove0 .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes gameMove0 {
+    0% {
+        top: 0rem;
+    }
+    100% {
+        top: 15rem;
+    }
+}
+
+.anim_gameMove1 {
+     animation: gameMove1 .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes gameMove1 {
+    0% {
+        top: 15rem;
+    }
+    100% {
+        top: 0rem;
+    }
+}

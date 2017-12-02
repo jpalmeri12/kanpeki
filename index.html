@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kanpeki!</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/cipher.js"></script>
+    <script src="js/doubletap.js"></script>
+    <script src="js/resize.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/wanakana.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="stage" class="screen">
+        <div id="menu">
+            <div id="headerBtn0" class="menuHeaderButton gradGreen" data-btnid="0">
+                <div class="menuHeaderText">Study</div>
+            </div>
+            <div id="headerBtn1" class="menuHeaderButton gradBlue" data-btnid="1">
+                <div class="menuHeaderText">Translate</div>
+            </div>
+            <div id="headerBtn2" class="menuHeaderButton gradRed" data-btnid="2">
+                <div class="menuHeaderText">Kanji</div>
+            </div>
+            <div id="headerDivider"></div>
+            <div id="levelButtons"></div>
+            <div id="wordListBox">
+                <div id="wordList">
+                    <div id="wordListTitle"></div>
+                    <div id="wordTableBox">
+                        <table id="wordTable"></table>
+                    </div>
+                    <div id="wordDetailBox">
+                        <div id="wordDetail">
+                            <div id="wordDetailText">
+                                <span id="wordDetailEN" class="textEN"></span>
+                                <br><span id="wordDetailKana" class="textJP"></span>
+                                <br><span id="wordDetailKanji" class="textJP"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="helpScreenBox">
+                <div id="helpScreen">
+                    <div id="helpLogo"></div>
+                    <div id="helpSubtitle">• A vocabulary study game for Genki I and II •</div>
+                    <div id="helpText">
+                    Study the meaning and kanji reading of each word.<br>Then, put your knowledge to the test!
+                    <br><br>
+                    Answer as many questions as you can without getting one wrong.<br>
+                    If you get them all right, you win!
+                    </div>
+                    <div id="helpReadyButton" class="hoverBorder">
+                        <div id="helpReadyButtonText">I'm ready</div>
+                    </div>
+                </div>
+            </div>
+            <div id="menuTotalScore"></div>
+            <div id="menuHelpButton" class="hoverBorder">
+                <div id="menuHelpButtonText">?</div>
+            </div>
+        </div>
+        <div id="game">
+            <div id="gameScreen">
+                <div id="score">
+                    <div id="scoreNum"></div>
+                </div>
+                <div id="levelInfo"></div>
+                <div id="levelMode"></div>
+                <div id="bestText"></div>
+                <div id="bestSubtext"></div>
+                <div id="mascotLeft" class="mascot">
+                    <div id="mascotLeftSignBox">
+                        <div id="mascotSignLeft" class="mascotSign">
+                            <div id="mascotSignTextLeft" class="mascotSignText"></div>
+                        </div>
+                    </div>
+                    <div id="mascotLeftImage" class="mascotImage"></div>
+                </div>
+                <div id="mascotRight" class="mascot">
+                    <div id="mascotRightSignBox">
+                        <div id="mascotSignRight" class="mascotSign">
+                            <div id="mascotSignTextRight" class="mascotSignText"></div>
+                        </div>
+                    </div>
+                    <div id="mascotRightImage" class="mascotImage"></div>
+                </div>
+                <div id="question">
+                    <div id="questionText"></div>
+                </div>
+                <input id="answerBox" autocapitalize="none" autocorrect="none" autocomplete="off">
+                <div id="answerSubtext"><span id="answerSubLabel" class="textEN">Answer:</span> <span id="answerSubEN" class="textEN"></span><span id="answerSubJP" class="textJP"></span></div>
+                <div id="gameTimer">
+                    <div id="gameTimerText"></div>
+                </div>
+                <div id="startPanel">
+                    <div id="gameStartButton" class="startPanelButton gradGreen hoverBorder">
+                        <div class="startPanelText">Start</div>
+                    </div>
+                    <div id="gameExitButton" class="startPanelButton gradRed hoverBorder">
+                        <div class="startPanelText">Exit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
