@@ -53,8 +53,7 @@ function loadRecords() {
     var oldRecords = localStorage.getItem("kanpekigenki");
     if (oldRecords == null) {
         makeRecords();
-    }
-    else {
+    } else {
         records = JSON.parse(oldRecords);
     }
 }
@@ -199,10 +198,10 @@ function bindClicks() {
         hideWordDetail();
         evt.stopPropagation();
     });
-    $("#menuHelpButton").click(function() {
+    $("#menuHelpButton").click(function () {
         showHelpScreen();
     });
-    $("#helpReadyButton").click(function() {
+    $("#helpReadyButton").click(function () {
         hideHelpScreen();
     });
 }
@@ -239,7 +238,12 @@ function loadWordTable(lv) {
 
 function bindTableClick(n) {
     $(".tc" + n).click(function () {
-        showWordDetail(n);
+        openJisho($(this).text());
+//        if (shiftDown) {
+//            openJisho($(this).text());
+//        } else {
+//            showWordDetail(n);
+//        }
     });
 }
 
@@ -258,6 +262,12 @@ function hideWordDetail() {
     $("#wordDetailBox").addClass("anim_wordDetailBoxOut");
     $("#wordDetail").removeClass("anim_wordDetailIn");
     $("#wordDetail").addClass("anim_wordDetailOut");
+}
+
+function openJisho(searchText) {
+    if (searchText != "") {
+        window.open('https://jisho.org/search/' + searchText, "_blank");
+    }
 }
 
 function updateMenu() {
@@ -307,8 +317,7 @@ function updateMenu() {
     } else if (totalScore > 0) {
         if (allClear) {
             $("#menuTotalScore").text("Total time: " + formatTime(totalTime));
-        }
-        else {
+        } else {
             $("#menuTotalScore").text("Total score: " + totalScore);
         }
     }
