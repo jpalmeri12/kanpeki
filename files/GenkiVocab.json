@@ -860,7 +860,7 @@
 }, {
     "en": "not at all",
     "kana": "ぜんぜん",
-    "kanji": "&#20840;&#28982;",
+    "kanji": "全然",
     "lesson": 3
 }, {
     "en": "usually",
@@ -1804,7 +1804,7 @@
     "lesson": 7
 }, {
     "en": "convenience store",
-    "kana": "&#12467;&#12531;&#12499;&#12491;",
+    "kana": "コンビニ",
     "kanji": "",
     "lesson": 7
 }, {
@@ -2919,7 +2919,7 @@
     "lesson": 12
 }, {
     "en": "match; game",
-    "kana": "&#12375;&#12354;&#12356;",
+    "kana": "しあい",
     "kanji": "試合",
     "lesson": 12
 }, {
@@ -2934,8 +2934,8 @@
     "lesson": 12
 }, {
     "en": "cough",
-    "kana": "&#12379;&#12365;",
-    "kanji": "&#21683;",
+    "kana": "せき",
+    "kanji": "咳",
     "lesson": 12
 }, {
     "en": "throat",
