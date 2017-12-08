@@ -76,7 +76,7 @@ function setScreen(n) {
 function makeLevels() {
     levels = [];
     var allCh = [];
-    var roman = ["", "I", "II", "III", "IV", "IV", "VI"];
+    var roman = ["", "I", "II", "III", "IV", "V", "VI"];
     for (var i = 0; i < 6; i++) {
         var ch = [];
         for (var j = 1; j <= 4; j++) {
