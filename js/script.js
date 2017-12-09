@@ -27,6 +27,8 @@ var records = [];
 
 var wordTable = [];
 
+var showHints = true;
+
 $(function () {
     loadVocab();
 });
@@ -373,6 +375,7 @@ function startGame() {
     game.gameWon = false;
     game.gameLost = false;
     game.newRecord = false;
+    showHints = true;
     loadQuestions();
     $("#score").removeClass("anim_scoreShake");
     $("#answerBox").val("");
@@ -525,6 +528,23 @@ function updateGame() {
         $(".mascotImage").addClass("mascotNormal");
         $(".mascot").removeClass("anim_mascotSway");
         $(".mascot").removeClass("anim_mascotJump");
+    }
+    // Katakana tip
+    var showTip = false;
+    var answer = wanakana.tokenize(game.questions[game.score].kana);
+    for (var i=0; i<answer.length; i++) {
+        if (wanakana.isKatakana(answer[i])) {
+            showTip = true;
+        }
+    }
+    if (showTip && showHints) {
+        showHints = false;
+        $("#tipBubble").removeClass("anim_tipOut");
+        $("#tipBubble").addClass("anim_tipIn");
+    }
+    else {
+        $("#tipBubble").removeClass("anim_tipIn");
+        $("#tipBubble").addClass("anim_tipOut");
     }
 }
 

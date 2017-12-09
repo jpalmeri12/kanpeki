@@ -820,6 +820,86 @@ input {
     color: #000000;
 }
 
+#tipBubble {
+    width: 15rem;
+    height: 1rem;
+    left: 2.5rem;
+    top: 11.5rem;
+    border-radius: .5rem;
+    position: absolute;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    z-index: 0;
+    opacity: 0;
+}
+
+#tipBubbleHead {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    background-color: #404040;
+}
+
+#tipBubbleHeadText {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    font-size: .5rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: white;
+}
+
+#tipBubbleBody {
+    width: 80%;
+    height: 100%;
+    left: 20%;
+    position: absolute;
+}
+
+#tipBubbleBodyText {
+    top: 50%;
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    font-family: "FuturaDemi";
+    font-size: .4rem;
+    text-align: center;
+    transform: translateY(-50%);
+    color: #404040;
+}
+
+.anim_tipIn {
+    animation: tipIn .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes tipIn {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.anim_tipOut {
+    animation: tipOut .25s cubic-bezier(.5, 0, .5, 1) normal forwards;
+}
+
+@keyframes tipOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 1;
+    }
+}
+
 .textJP {
     font-family: "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
 }
