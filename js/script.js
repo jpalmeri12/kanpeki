@@ -434,15 +434,19 @@ function updateGame() {
         $("#score").addClass("scoreNormal");
         $("#scoreNum").removeClass("scoreNumFreeze");
         $("#scoreNum").addClass("scoreNumNormal");
+        var questionText;
         if (game.mode == 0) {
-            $("#questionText").text(game.questions[game.score].en);
+            questionText = game.questions[game.score].en; 
             $("#questionText").removeClass("textJP");
             $("#questionText").addClass("textEN");
+            $("#questionText").css("font-size", ".75rem");
         } else if (game.mode == 1) {
-            $("#questionText").text(game.questions[game.score].kanji);
+            questionText = game.questions[game.score].kanji;
             $("#questionText").removeClass("textEN");
             $("#questionText").addClass("textJP");
+            $("#questionText").css("font-size", "1rem");
         }
+        $("#questionText").text(questionText);
         $("#startPanel").removeClass("anim_startPanelIn");
         $("#startPanel").addClass("anim_startPanelOut");
         $("#startPanel").css("pointer-events", "none");
