@@ -541,7 +541,7 @@ function updateGame() {
             showTip = true;
         }
     }
-    if (showTip && showHints && game.timerAnim == 0) {
+    if (showTip && showHints && game.timerAnim == 0 && game.on) {
         showHints = false;
         $("#tipBubble").removeClass("anim_tipOut");
         $("#tipBubble").addClass("anim_tipIn");
